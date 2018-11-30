@@ -9,16 +9,16 @@ public class Judgement {
     private int id;
     private String date;    //yyyy-mm-dd
     private CourtType courtType;
-    private List<Judge> judges = new ArrayList<>();
-    private Map<String, String> judgesFunctions = new HashMap<>();  //K - name, V - function
+    private List<Judge> judges;
+    private Map<Judge, List<String>> judgesRoles;  //K - name, V - role
     private String substantiation;
 
-    public Judgement(int id, String date, CourtType courtType, List<Judge> judges, Map<String, String> judgesFunctions, String textContent) {
+    public Judgement(int id, String date, CourtType courtType, List<Judge> judges, Map<Judge, List<String>> judgesRoles, String textContent) {
         this.id = id;
         this.date = date;
         this.courtType = courtType;
         this.judges = judges;
-        this.judgesFunctions = judgesFunctions;
+        this.judgesRoles = judgesRoles;
         this.substantiation = textContent;
     }
 }
