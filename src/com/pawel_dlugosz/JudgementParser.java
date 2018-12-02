@@ -5,10 +5,7 @@ import com.google.gson.stream.JsonReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JudgementParser {
     public List<Judgement> readJsonStream(InputStream in) throws IOException {
@@ -41,12 +38,13 @@ public class JudgementParser {
         return judgements;
     }
     public Judgement readJudgement (JsonReader reader) throws IOException {
-        int id;
-        String date;
-        CourtType courtType;
+        int id = 0;
+        String date = "";
+        CourtType courtType = CourtType.COMMON;
         List<Judge> judges = new ArrayList<>();
-        Map<Judge, List<String>> judgesRoles;
-        String textContent;
+        Map<Judge, List<String>> judgesRoles = new HashMap<>();
+        String textContent = "";
+        List<Statute> statutes = new LinkedList<>();
 
         reader.beginObject();
         while(reader.hasNext()){
@@ -61,12 +59,15 @@ public class JudgementParser {
                 judgesRoles = readJudgesArray(reader);
                 judges.addAll(judgesRoles.keySet());
             }
-            else if ()                                                       //dodać wczytywanie ustaw
+            else if (name.equals("referencedRegulations"))
+                statutes = readStatutesArray(reader);
             else if(name.equals("textContent"))
                 textContent = reader.nextString();
+            else
+                reader.skipValue();
         }
         reader.endObject();
-
+        return new Judgement(id, date, courtType, judges, judgesRoles, textContent, statutes);
     }
     public Map<Judge, List<String>> readJudgesArray(JsonReader reader) throws IOException {
         Map<Judge, List<String>> result = new HashMap<>();
@@ -100,5 +101,37 @@ public class JudgementParser {
         }
         reader.endArray();
         return result;
+    }
+    public List<Statute> readStatutesArray(JsonReader reader) throws IOException {
+        List<Statute> result = new ArrayList<>();
+        reader.beginArray();
+        while(reader.hasNext()){
+            result.add(readStatute(reader));
+        }
+        reader.endArray();
+        return result;
+    }
+    public Statute readStatute(JsonReader reader) throws IOException {
+        String journalTitle = "";
+        int journalNo = 0;
+        int journalYear = 0;
+        int journalEntry = 0;
+
+        reader.beginObject();
+        while(reader.hasNext()){
+            String name = reader.nextName();
+            if(name.equals("journalTitle"))
+                journalTitle = reader.nextString();
+            else if(name.equals("journalNo"))
+                journalNo = reader.nextInt();
+            else if(name.equals("journalYear"))
+                journalYear = reader.nextInt();
+            else if(name.equals("journalEntry"))
+                journalEntry = reader.nextInt();
+            else
+                reader.skipValue();
+        }
+        reader.endObject();
+        return new Statute(journalTitle, journalNo, journalYear, journalEntry);
     }
 }

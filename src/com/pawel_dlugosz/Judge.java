@@ -23,6 +23,10 @@ public class Judge implements Comparable<Judge>{
         return other.getNumberOfJudgements() - this.numberOfJudgements;
     }
 
+    public void incrementNumberOfJudgements() {
+        this.numberOfJudgements++;
+    }
+
     @Override
 public boolean equals(Object o) {
         if (this == o) return true;
@@ -34,5 +38,10 @@ public boolean equals(Object o) {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
