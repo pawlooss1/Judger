@@ -62,16 +62,29 @@ public class App {
             topStatutes.add(it.next());
         return topStatutes;
     }
-    public static void main(String[] args) {
+    public String printRubrum(String caseSignature){
+        for(Judgement judgement : loadedJudgements){
+            if(judgement.getCaseNumber().equals(caseSignature))
+                return judgement.toString();
+        }
+        return "Brak orzeczenia o danej sygnaturze";
+    }
+    public static void main(String[] args) {        //JLine, single responsibility principle
         App judger = new App();
         judger.loadFiles(args[0]);
         judger.countOccurances();
 
         List<Judge> testTop10 = judger.take10Judges();
-        //for(Judgement judgement : judger.loadedJudgements)
-        //    System.out.println(judgement.toString());
         for(Judge judge : testTop10){
             System.out.println(judge.getName() + " " + judge.getNumberOfJudgements());
         }
+        /*List<Statute> testTop10Statutes = judger.take10Statues();
+        for(Statute statute : testTop10Statutes)
+            System.out.println(statute.getJournalTitle() + " - " + statute.getNumberOfOccurances());
+        */
+        for(Judgement judgement : judger.loadedJudgements)
+            System.out.println(judgement.toString());
+
+
     }
 }

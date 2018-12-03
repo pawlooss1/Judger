@@ -40,9 +40,10 @@ public class JudgementParser {
     public Judgement readJudgement (JsonReader reader) throws IOException {
         int id = 0;
         String date = "";
+        String caseNumber = "";
         CourtType courtType = CourtType.COMMON;
         List<Judge> judges = new ArrayList<>();
-        Map<Judge, List<String>> judgesRoles = new HashMap<>();
+        Map<Judge, List<SpecialRole>> judgesRoles = new HashMap<>();
         String textContent = "";
         List<Statute> statutes = new LinkedList<>();
 
@@ -53,6 +54,8 @@ public class JudgementParser {
                 id = reader.nextInt();
             else if(name.equals("judgmentDate"))
                 date = reader.nextString();
+            else if(name.equals("courtCases"))
+                caseNumber = readCaseNumber(reader);
             else if(name.equals("courtType"))
                 courtType = CourtType.parseFromString(reader.nextString());
             else if(name.equals("judges")){
@@ -67,13 +70,30 @@ public class JudgementParser {
                 reader.skipValue();
         }
         reader.endObject();
-        return new Judgement(id, date, courtType, judges, judgesRoles, textContent, statutes);
+        return new Judgement(id, date, caseNumber, courtType, judges, judgesRoles, textContent, statutes);
     }
-    public Map<Judge, List<String>> readJudgesArray(JsonReader reader) throws IOException {
-        Map<Judge, List<String>> result = new HashMap<>();
+    public String readCaseNumber(JsonReader reader) throws IOException {
+        String result = "";
+        reader.beginArray();
+        while(reader.hasNext()){
+            reader.beginObject();
+            while(reader.hasNext()){
+                String name = reader.nextName();
+                if(name.equals("caseNumber"))
+                    result = reader.nextString();
+                else
+                    reader.skipValue();
+            }
+            reader.endObject();
+        }
+        reader.endArray();
+        return result;
+    }
+    public Map<Judge, List<SpecialRole>> readJudgesArray(JsonReader reader) throws IOException {
+        Map<Judge, List<SpecialRole>> result = new HashMap<>();
         String judgeName = "";
         Judge judge = null;
-        List<String> judgeRoles = new ArrayList<>();
+        List<SpecialRole> judgeRoles = new ArrayList<>();
 
         reader.beginArray();
         while(reader.hasNext()){
@@ -93,11 +113,11 @@ public class JudgementParser {
         reader.endArray();
         return result;
     }
-    public List<String> readRolesArray(JsonReader reader) throws IOException {
-        List<String> result = new ArrayList<>();
+    public List<SpecialRole> readRolesArray(JsonReader reader) throws IOException {
+        List<SpecialRole> result = new ArrayList<>();
         reader.beginArray();
         while(reader.hasNext()){
-            result.add(reader.nextString());
+            result.add(SpecialRole.parseFromString(reader.nextString()));
         }
         reader.endArray();
         return result;
