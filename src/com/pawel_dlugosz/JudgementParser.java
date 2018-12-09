@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class JudgementParser {
+    IJudgementBuilder builder = new JudgementBuilder();
+
     public List<Judgement> readJsonStream(InputStream in) throws IOException {
         JsonReader reader = new JsonReader(new InputStreamReader(in));
         List<Judgement> result = new ArrayList<>();
@@ -70,7 +72,15 @@ public class JudgementParser {
                 reader.skipValue();
         }
         reader.endObject();
-        return new Judgement(id, date, caseNumber, courtType, judges, judgesRoles, textContent, statutes);
+        return builder.setId(id)
+                      .setDate(date)
+                      .setCaseNumber(caseNumber)
+                      .setCourtType(courtType)
+                      .setJudges(judges)
+                      .setJudgesRoles(judgesRoles)
+                      .setSubstantiation(textContent)
+                      .setStatutes(statutes)
+                      .build();
     }
 
     public String readCaseNumber(JsonReader reader) throws IOException {
