@@ -13,9 +13,9 @@ public class JudgementParser {
         List<Judgement> result = new ArrayList<>();
         try {
             reader.beginObject();
-            while(reader.hasNext()){
+            while (reader.hasNext()) {
                 String header = reader.nextName();
-                if(header.equals("items"))
+                if (header.equals("items"))
                     result = readJudgementsArray(reader);
                 else
                     reader.skipValue();
@@ -23,21 +23,22 @@ public class JudgementParser {
             }
             reader.endObject();
             return result;
-        }
-        finally {
+        } finally {
             reader.close();
         }
     }
+
     public List<Judgement> readJudgementsArray(JsonReader reader) throws IOException {
         List<Judgement> judgements = new ArrayList<>();
         reader.beginArray();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             judgements.add(readJudgement(reader));
         }
         reader.endArray();
         return judgements;
     }
-    public Judgement readJudgement (JsonReader reader) throws IOException {
+
+    public Judgement readJudgement(JsonReader reader) throws IOException {
         int id = 0;
         String date = "";
         String caseNumber = "";
@@ -48,23 +49,22 @@ public class JudgementParser {
         List<Statute> statutes = new LinkedList<>();
 
         reader.beginObject();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             String name = reader.nextName();
-            if(name.equals("id"))
+            if (name.equals("id"))
                 id = reader.nextInt();
-            else if(name.equals("judgmentDate"))
+            else if (name.equals("judgmentDate"))
                 date = reader.nextString();
-            else if(name.equals("courtCases"))
+            else if (name.equals("courtCases"))
                 caseNumber = readCaseNumber(reader);
-            else if(name.equals("courtType"))
+            else if (name.equals("courtType"))
                 courtType = CourtType.parseFromString(reader.nextString());
-            else if(name.equals("judges")){
+            else if (name.equals("judges")) {
                 judgesRoles = readJudgesArray(reader);
                 judges.addAll(judgesRoles.keySet());
-            }
-            else if (name.equals("referencedRegulations"))
+            } else if (name.equals("referencedRegulations"))
                 statutes = readStatutesArray(reader);
-            else if(name.equals("textContent"))
+            else if (name.equals("textContent"))
                 textContent = reader.nextString();
             else
                 reader.skipValue();
@@ -72,14 +72,15 @@ public class JudgementParser {
         reader.endObject();
         return new Judgement(id, date, caseNumber, courtType, judges, judgesRoles, textContent, statutes);
     }
+
     public String readCaseNumber(JsonReader reader) throws IOException {
         String result = "";
         reader.beginArray();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             reader.beginObject();
-            while(reader.hasNext()){
+            while (reader.hasNext()) {
                 String name = reader.nextName();
-                if(name.equals("caseNumber"))
+                if (name.equals("caseNumber"))
                     result = reader.nextString();
                 else
                     reader.skipValue();
@@ -89,6 +90,7 @@ public class JudgementParser {
         reader.endArray();
         return result;
     }
+
     public Map<Judge, List<SpecialRole>> readJudgesArray(JsonReader reader) throws IOException {
         Map<Judge, List<SpecialRole>> result = new HashMap<>();
         String judgeName = "";
@@ -96,13 +98,13 @@ public class JudgementParser {
         List<SpecialRole> judgeRoles = new ArrayList<>();
 
         reader.beginArray();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             reader.beginObject();
-            while(reader.hasNext()){
+            while (reader.hasNext()) {
                 String name = reader.nextName();
-                if(name.equals("name"))
+                if (name.equals("name"))
                     judge = new Judge(reader.nextString());
-                else if(name.equals("specialRoles"))
+                else if (name.equals("specialRoles"))
                     judgeRoles = readRolesArray(reader);
                 else
                     reader.skipValue();
@@ -113,24 +115,27 @@ public class JudgementParser {
         reader.endArray();
         return result;
     }
+
     public List<SpecialRole> readRolesArray(JsonReader reader) throws IOException {
         List<SpecialRole> result = new ArrayList<>();
         reader.beginArray();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             result.add(SpecialRole.parseFromString(reader.nextString()));
         }
         reader.endArray();
         return result;
     }
+
     public List<Statute> readStatutesArray(JsonReader reader) throws IOException {
         List<Statute> result = new ArrayList<>();
         reader.beginArray();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             result.add(readStatute(reader));
         }
         reader.endArray();
         return result;
     }
+
     public Statute readStatute(JsonReader reader) throws IOException {
         String journalTitle = "";
         int journalNo = 0;
@@ -138,15 +143,15 @@ public class JudgementParser {
         int journalEntry = 0;
 
         reader.beginObject();
-        while(reader.hasNext()){
+        while (reader.hasNext()) {
             String name = reader.nextName();
-            if(name.equals("journalTitle"))
+            if (name.equals("journalTitle"))
                 journalTitle = reader.nextString();
-            else if(name.equals("journalNo"))
+            else if (name.equals("journalNo"))
                 journalNo = reader.nextInt();
-            else if(name.equals("journalYear"))
+            else if (name.equals("journalYear"))
                 journalYear = reader.nextInt();
-            else if(name.equals("journalEntry"))
+            else if (name.equals("journalEntry"))
                 journalEntry = reader.nextInt();
             else
                 reader.skipValue();

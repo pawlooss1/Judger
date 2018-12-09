@@ -61,11 +61,11 @@ public class Judgement {
     @Override
     public String toString() {
         String judgesWithRoles = "Skład sędziowski:\n";
-        for(Judge judge : judges){
+        for (Judge judge : judges) {
             String judgeDescription = judge.toString();
-            if(!judgesRoles.get(judge).isEmpty())
+            if (!judgesRoles.get(judge).isEmpty())
                 judgeDescription += ": ";
-            for(SpecialRole role : judgesRoles.get(judge)){
+            for (SpecialRole role : judgesRoles.get(judge)) {
                 judgeDescription += role.toString() + " ";
             }
             judgesWithRoles += judgeDescription + "\n";
