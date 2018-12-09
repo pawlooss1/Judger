@@ -15,6 +15,8 @@ public class Judgement {
     private String substantiation;
     private List<Statute> statutes;
 
+    public Judgement() {
+    }
     public Judgement(int id, String date, String caseNumber, CourtType courtType, List<Judge> judges, Map<Judge, List<SpecialRole>> judgesRoles, String textContent, List<Statute> statutes) {
         this.id = id;
         this.date = date;
@@ -56,6 +58,38 @@ public class Judgement {
 
     public List<Statute> getStatutes() {
         return statutes;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setCaseNumber(String caseNumber) {
+        this.caseNumber = caseNumber;
+    }
+
+    public void setCourtType(CourtType courtType) {
+        this.courtType = courtType;
+    }
+
+    public void setJudges(List<Judge> judges) {
+        this.judges = judges;
+    }
+
+    public void setJudgesRoles(Map<Judge, List<SpecialRole>> judgesRoles) {
+        this.judgesRoles = judgesRoles;
+    }
+
+    public void setSubstantiation(String substantiation) {
+        this.substantiation = substantiation;
+    }
+
+    public void setStatutes(List<Statute> statutes) {
+        this.statutes = statutes;
     }
 
     @Override
