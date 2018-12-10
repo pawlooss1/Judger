@@ -15,6 +15,7 @@ public class Judgement {
 
     public Judgement() {
     }
+
     public Judgement(int id, String date, String caseNumber, CourtType courtType, List<Judge> judges, Map<Judge, List<SpecialRole>> judgesRoles, String textContent, List<Statute> statutes) {
         this.id = id;
         this.date = date;
@@ -92,16 +93,18 @@ public class Judgement {
 
     @Override
     public String toString() {
-        String judgesWithRoles = "Skład sędziowski:\n";
+        StringBuilder judgesWithRoles = new StringBuilder("Skład sędziowski:\n");
         for (Judge judge : judges) {
-            String judgeDescription = judge.toString();
+            StringBuilder judgeDescription = new StringBuilder(judge.toString());
             if (!judgesRoles.get(judge).isEmpty())
-                judgeDescription += ": ";
+                judgeDescription.append(": ");
             for (SpecialRole role : judgesRoles.get(judge)) {
-                judgeDescription += role.toString() + " ";
+                judgeDescription.append(role.toString());
+                judgeDescription.append(" ");
             }
-            judgesWithRoles += judgeDescription + "\n";
+            judgesWithRoles.append(judgeDescription.toString());
+            judgesWithRoles.append("\n");
         }
-        return caseNumber + "\n" + date + "\n" + courtType.toString() + "\n\n" + judgesWithRoles + "\n";
+        return caseNumber + "\n" + date + "\n" + courtType.toString() + "\n\n" + judgesWithRoles.toString() + "\n";
     }
 }

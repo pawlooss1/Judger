@@ -2,7 +2,7 @@ package com.pawel_dlugosz;
 
 import java.util.Objects;
 
-public class Statute implements Comparable<Statute>{
+public class Statute implements Comparable<Statute> {
     private String journalTitle;
     private int journalNo;
     private int journalYear;
@@ -37,8 +37,12 @@ public class Statute implements Comparable<Statute>{
         return numberOfOccurances;
     }
 
-    public int compareTo(Statute other){
-        return other.getNumberOfOccurances() - this.numberOfOccurances;
+    public int compareTo(Statute other) {
+        return other.numberOfOccurances - this.numberOfOccurances;
+    }
+
+    public void incrementOccurances() {
+        this.numberOfOccurances++;
     }
 
     @Override
@@ -58,7 +62,8 @@ public class Statute implements Comparable<Statute>{
         return Objects.hash(journalNo, journalYear, journalEntry);
     }
 
-    public void incrementOccurances(){
-        this.numberOfOccurances++;
+    @Override
+    public String toString() {
+        return this.journalTitle;
     }
 }

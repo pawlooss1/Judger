@@ -20,7 +20,7 @@ public class Judge implements Comparable<Judge> {
     }
 
     public int compareTo(Judge other) {
-        return other.getNumberOfJudgements() - this.numberOfJudgements;
+        return other.numberOfJudgements - this.numberOfJudgements;
     }
 
     public void incrementNumberOfJudgements() {

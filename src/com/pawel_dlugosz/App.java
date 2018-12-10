@@ -6,32 +6,7 @@ import java.util.*;
 public class App {
     private SortedSet<Judge> judges; // = new TreeSet<>();
     private SortedSet<Statute> statutes; // = new TreeSet<>();
-    private List<Judgement> judgements;
-
-
-    public List<Judge> take10Judges() {
-        List<Judge> topJudges = new ArrayList<>();
-        Iterator<Judge> it = judges.iterator();
-        for (int i = 0; i < 10 && it.hasNext(); i++)
-            topJudges.add(it.next());
-        return topJudges;
-    }
-
-    public List<Statute> take10Statues() {
-        List<Statute> topStatutes = new ArrayList<>();
-        Iterator<Statute> it = statutes.iterator();
-        for (int i = 0; i < 10 && it.hasNext(); i++)
-            topStatutes.add(it.next());
-        return topStatutes;
-    }
-
-    public String printRubrum(String caseSignature) {
-        for (Judgement judgement : judgements) {
-            if (judgement.getCaseNumber().equals(caseSignature))
-                return judgement.toString();
-        }
-        return "Brak orzeczenia o danej sygnaturze";
-    }
+    private LinkedHashMap<String, Judgement> judgements;
 
     public static void main(String[] args) {        //JLine, single responsibility principle
         if (args.length != 1) {
@@ -44,17 +19,18 @@ public class App {
         judger.judges = judgementLoader.countJudges();
         judger.statutes = judgementLoader.countStatutes();
 
-        List<Judge> testTop10 = judger.take10Judges();
+        List<Judge> testTop10 = Functions.take10Judges(judger.judges);
         for (Judge judge : testTop10) {
             System.out.println(judge.getName() + " " + judge.getNumberOfJudgements());
         }
-        /*List<Statute> testTop10Statutes = judger.take10Statues();
-        for(Statute statute : testTop10Statutes)
+        List<Statute> testTop10Statutes = Functions.take10Statues(judger.statutes);
+        for (Statute statute : testTop10Statutes)
             System.out.println(statute.getJournalTitle() + " - " + statute.getNumberOfOccurances());
-        */
-        for (Judgement judgement : judger.judgements)
-            System.out.println(judgement.toString());
 
+        List<String> testSignatures = Arrays.asList("U 2/87", "Uw 6/87", "P 3/87");
+        System.out.println(Functions.getRubrums(testSignatures, judger.judgements));
 
+        //for (Judgement judgement : judger.judgements.values())
+        //    System.out.println(judgement.toString());
     }
 }
