@@ -3,11 +3,12 @@ package com.pawel_dlugosz;
 public enum SpecialRole {
     PRESIDING_JUDGE,
     REPORTING_JUDGE,
-    REASONS_FOR_JUDGMENT_AUTHOR;
+    REASONS_FOR_JUDGMENT_AUTHOR,
+    NONE;
 
     @Override
     public String toString() {
-        switch(this){
+        switch (this) {
             case PRESIDING_JUDGE:
                 return "Przewodniczący składu sędziowskiego";
             case REPORTING_JUDGE:
@@ -17,14 +18,15 @@ public enum SpecialRole {
         }
         return "";
     }
-    public static SpecialRole parseFromString(String role){
-        if(role.equals("PRESIDING_JUDGE"))
+
+    public static SpecialRole parseFromString(String role) {
+        if (role.equals("PRESIDING_JUDGE") || role.matches(".*przewodniczący.*"))
             return PRESIDING_JUDGE;
-        if(role.equals("REPORTING_JUDGE"))
+        if (role.equals("REPORTING_JUDGE") || role.matches(".*sprawozdawca.*"))
             return REPORTING_JUDGE;
-        if(role.equals("REASONS_FOR_JUDGMENT_AUTHOR"))
+        if (role.equals("REASONS_FOR_JUDGMENT_AUTHOR") || role.matches(".*uzasad.*"))
             return REASONS_FOR_JUDGMENT_AUTHOR;
         else
-            return PRESIDING_JUDGE;
+            return NONE;
     }
 }

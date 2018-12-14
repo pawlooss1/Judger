@@ -24,13 +24,13 @@ public class JsonParser {
 
             }
             reader.endObject();
-            return result;
         } finally {
             reader.close();
         }
+        return result;
     }
 
-    public List<Judgement> readJudgementsArray(JsonReader reader) throws IOException {
+    private List<Judgement> readJudgementsArray(JsonReader reader) throws IOException {
         List<Judgement> judgements = new ArrayList<>();
         reader.beginArray();
         while (reader.hasNext()) {
@@ -40,7 +40,7 @@ public class JsonParser {
         return judgements;
     }
 
-    public Judgement readJudgement(JsonReader reader) throws IOException {
+    private Judgement readJudgement(JsonReader reader) throws IOException {
         int id = 0;
         String date = "";
         String caseNumber = "";
@@ -83,7 +83,7 @@ public class JsonParser {
                       .build();
     }
 
-    public String readCaseNumber(JsonReader reader) throws IOException {
+    private String readCaseNumber(JsonReader reader) throws IOException {
         String result = "";
         reader.beginArray();
         while (reader.hasNext()) {
@@ -101,7 +101,7 @@ public class JsonParser {
         return result;
     }
 
-    public Map<Judge, List<SpecialRole>> readJudgesArray(JsonReader reader) throws IOException {
+    private Map<Judge, List<SpecialRole>> readJudgesArray(JsonReader reader) throws IOException {
         Map<Judge, List<SpecialRole>> result = new HashMap<>();
         String judgeName = "";
         Judge judge = null;
@@ -126,17 +126,19 @@ public class JsonParser {
         return result;
     }
 
-    public List<SpecialRole> readRolesArray(JsonReader reader) throws IOException {
+    private List<SpecialRole> readRolesArray(JsonReader reader) throws IOException {
         List<SpecialRole> result = new ArrayList<>();
         reader.beginArray();
         while (reader.hasNext()) {
             result.add(SpecialRole.parseFromString(reader.nextString()));
         }
         reader.endArray();
+        if (result.size() == 0)
+            result.add(SpecialRole.NONE);
         return result;
     }
 
-    public List<Statute> readStatutesArray(JsonReader reader) throws IOException {
+    private List<Statute> readStatutesArray(JsonReader reader) throws IOException {
         List<Statute> result = new ArrayList<>();
         reader.beginArray();
         while (reader.hasNext()) {
@@ -146,7 +148,7 @@ public class JsonParser {
         return result;
     }
 
-    public Statute readStatute(JsonReader reader) throws IOException {
+    private Statute readStatute(JsonReader reader) throws IOException {
         String journalTitle = "";
         int journalNo = 0;
         int journalYear = 0;
