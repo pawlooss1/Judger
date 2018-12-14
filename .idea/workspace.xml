@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="800a819a-cec1-47ba-90a5-d2f83e544caa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/HtmlParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/FileLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/FileLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/Functions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/Judgement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Judger/com/pawel_dlugosz/Judgement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pawel_dlugosz/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pawel_dlugosz/FileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/FileLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pawel_dlugosz/Judge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/Judge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pawel_dlugosz/Judgement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/Judgement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pawel_dlugosz/Statute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/Statute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawel_dlugosz/JsonParser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,39 +24,40 @@
     <session id="6196557">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="3" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="1" />
-          <entry key="java" value="12" />
+          <entry key="java" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="12" />
+          <entry key="JAVA" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="java" value="8250" />
+          <entry key="java" value="9090" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8250" />
+          <entry key="JAVA" value="9090" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
@@ -63,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
+            <state relative-caret-position="165">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Functions.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
-              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -84,7 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Statute.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
+            <state relative-caret-position="735">
               <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
               <folding>
                 <element signature="e#963#964#0" expanded="true" />
@@ -99,8 +104,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/FileLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="24" column="77" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+            <state relative-caret-position="205">
+              <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/HtmlParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,10 +126,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementParser.java">
+        <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/JsonParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+            <state relative-caret-position="150">
+              <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,7 +140,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Judgement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="1035">
               <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -177,13 +194,15 @@
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/SpecialRole.java" />
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/IJudgementBuilder.java" />
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementParser.java" />
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/Judge.java" />
-        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/App.java" />
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/Statute.java" />
-        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/FileLoader.java" />
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/Judgement.java" />
         <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/Functions.java" />
+        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/App.java" />
+        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementParser.java" />
+        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/JsonParser.java" />
+        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/HtmlParser.java" />
+        <option value="$PROJECT_DIR$/src/com/pawel_dlugosz/FileLoader.java" />
       </list>
     </option>
   </component>
@@ -205,6 +224,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -212,6 +232,11 @@
             <path>
               <item name="Judger" type="b2602c69:ProjectViewProjectNode" />
               <item name="Judger" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Judger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Judger" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Judger" type="b2602c69:ProjectViewProjectNode" />
@@ -232,7 +257,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,9 +265,9 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544436112507" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab7" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544786959428" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jsoup-1.11.3.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -297,18 +321,20 @@
       <workItem from="1543826733856" duration="4709000" />
       <workItem from="1544372203852" duration="3979000" />
       <workItem from="1544385044056" duration="1498000" />
-      <workItem from="1544431466577" duration="4609000" />
+      <workItem from="1544431466577" duration="4930000" />
+      <workItem from="1544447034309" duration="80000" />
+      <workItem from="1544780555118" duration="5980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47018000" />
+    <option name="totallyTimeSpent" value="53399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23242944" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23796348" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -348,34 +374,12 @@
     <entry file="file://$PROJECT_DIR$/Judger.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/IJudgementBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -396,7 +400,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Statute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
+        <state relative-caret-position="735">
           <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
           <folding>
             <element signature="e#963#964#0" expanded="true" />
@@ -409,10 +413,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Judgement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="1035">
           <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/JudgementBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -424,10 +440,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Functions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
+        <state relative-caret-position="165">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -436,18 +459,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/FileLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="24" column="77" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+        <state relative-caret-position="205">
+          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/Functions.java">
+    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/JsonParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+        <state relative-caret-position="150">
+          <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pawel_dlugosz/HtmlParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

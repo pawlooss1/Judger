@@ -9,16 +9,17 @@ public class App {
     private LinkedHashMap<String, Judgement> judgements;
 
     public static void main(String[] args) {        //JLine, single responsibility principle
-        if (args.length != 1) {
-            System.out.println("Niepoprawne argumenty. Podaj ścieżkę dostępu do katalogu z orzeczeniami.");
-            System.exit(1);
-        }
         App judger = new App();
         FileLoader judgementLoader = new FileLoader(args[0]);
-        judger.judgements = judgementLoader.loadFiles();
-        judger.judges = judgementLoader.countJudges();
-        judger.statutes = judgementLoader.countStatutes();
-
+        try {
+            judger.judgements = judgementLoader.loadFiles();
+            judger.judges = judgementLoader.countJudges();
+            judger.statutes = judgementLoader.countStatutes();
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
         List<Judge> testTop10 = Functions.take10Judges(judger.judges);
         for (Judge judge : testTop10) {
             System.out.println(judge.getName() + " " + judge.getNumberOfJudgements());
