@@ -31,7 +31,7 @@ public class App {
         List<String> testSignatures = Arrays.asList("U 2/87", "Uw 6/87", "P 3/87");
         System.out.println(Functions.getRubrums(testSignatures, judger.judgements));
 
-        //for (Judgement judgement : judger.judgements.values())
-        //    System.out.println(judgement.toString());
+        for (Judgement judgement : judger.judgements.values())
+            System.out.println(judgement.toString());
     }
 }

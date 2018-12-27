@@ -57,6 +57,9 @@ public class FileLoader {
         catch (IOException e) {
             e.printStackTrace();
         }
+        catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
     }
 
     private void putLoadedJudgements(List<Judgement> loadedFromFile) {

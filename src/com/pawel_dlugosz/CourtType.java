@@ -25,13 +25,13 @@ public enum CourtType {
     }
 
     public static CourtType parseFromString(String type){
-        if(type.equals("COMMON"))
+        if(type.equals("COMMON") || type.matches(".*powszechny.*"))
             return COMMON;
-        if(type.equals("SUPREME"))
+        if(type.equals("SUPREME") || type.matches(".*najwyższy.*"))
             return SUPREME;
-        if(type.equals("ADMINISTRATIVE"))
+        if(type.equals("ADMINISTRATIVE") || type.matches(".*administracyjny.*"))
             return ADMINISTRATIVE;
-        if(type.equals("CONSTITUTIONAL_TRIBUNAL"))
+        if(type.equals("CONSTITUTIONAL_TRIBUNAL") || type.matches(".*konstytucyjny.*"))
             return CONSTITUTIONAL_TRIBUNAL;
         else
             return NATIONAL_APPEAL_CHAMBER;

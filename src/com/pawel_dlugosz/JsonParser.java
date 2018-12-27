@@ -47,7 +47,7 @@ public class JsonParser {
         CourtType courtType = CourtType.COMMON;
         List<Judge> judges = new ArrayList<>();
         Map<Judge, List<SpecialRole>> judgesRoles = new HashMap<>();
-        String textContent = "";
+        String substantiation = "";
         List<Statute> statutes = new LinkedList<>();
 
         reader.beginObject();
@@ -67,7 +67,7 @@ public class JsonParser {
             } else if (name.equals("referencedRegulations"))
                 statutes = readStatutesArray(reader);
             else if (name.equals("textContent"))
-                textContent = reader.nextString();
+                substantiation = reader.nextString();
             else
                 reader.skipValue();
         }
@@ -78,7 +78,7 @@ public class JsonParser {
                       .setCourtType(courtType)
                       .setJudges(judges)
                       .setJudgesRoles(judgesRoles)
-                      .setSubstantiation(textContent)
+                      .setSubstantiation(substantiation)
                       .setStatutes(statutes)
                       .build();
     }
