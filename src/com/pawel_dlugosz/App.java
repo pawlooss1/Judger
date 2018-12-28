@@ -15,8 +15,7 @@ public class App {
             judger.judgements = judgementLoader.loadFiles();
             judger.judges = judgementLoader.countJudges();
             judger.statutes = judgementLoader.countStatutes();
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             System.exit(1);
         }
@@ -28,10 +27,10 @@ public class App {
         for (Statute statute : testTop10Statutes)
             System.out.println(statute.getJournalTitle() + " - " + statute.getNumberOfOccurances());
 
-        List<String> testSignatures = Arrays.asList("U 2/87", "Uw 6/87", "P 3/87");
-        System.out.println(Functions.getRubrums(testSignatures, judger.judgements));
-
-        for (Judgement judgement : judger.judgements.values())
-            System.out.println(judgement.toString());
+        System.out.println(Functions.getJudgementsByMonth(judger.judgements));
+        System.out.println(Functions.getJudgementsByCourt(judger.judgements));
+        System.out.println(Functions.getJudgementsByJudges(judger.judgements));
+        //for (Judgement judgement : judger.judgements.values())
+        //    System.out.println(judgement.toString());
     }
 }

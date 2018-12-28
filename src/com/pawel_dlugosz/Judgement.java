@@ -107,4 +107,14 @@ public class Judgement {
         }
         return caseNumber + "\n" + date + "\n" + courtType.toString() + "\n\n" + judgesWithRoles.toString() + "\n";
     }
+
+    public int getMonth() {    //zwraca miesiac w postaci liczby 0-11
+        String[] date = this.getDate().split("-");
+        String month = date[1];
+        return Integer.parseInt(month) - 1;
+    }
+
+    public int countJudges() {
+        return this.judges.size();
+    }
 }

@@ -46,8 +46,7 @@ public class HtmlParser {
     private String readCaseNumber(Document document) {
         Element caseNumberContent = document.select(".war_header").first();
         String text = caseNumberContent.text();
-        String[] splitContent = text.split("-");
-        return splitContent[0];
+        return text.substring(0, text.indexOf('-') - 1);
     }
 
     private CourtType readCourtType(Elements labels, Elements values) {
