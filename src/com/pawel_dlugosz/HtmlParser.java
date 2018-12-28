@@ -58,7 +58,7 @@ public class HtmlParser {
     private Map<Judge, List<SpecialRole>> readJudges(Elements labels, Elements values) {
         try {
             int index = this.getIndexOf("Sędziowie", labels);
-            String[] splitJudges = values.get(index).text().split("<br>");
+            String[] splitJudges = values.get(index).toString().split("<br>");
             Map<Judge, List<SpecialRole>> result = new HashMap<>();
             for (String judgeWithRoles : splitJudges)
                 result.put(getJudge(judgeWithRoles), getRoles(judgeWithRoles));
@@ -70,18 +70,25 @@ public class HtmlParser {
 
     private Judge getJudge(String judgeWithRoles) {
         if (judgeWithRoles.charAt(0) == '<')
-            return getJudge(judgeWithRoles.substring(judgeWithRoles.lastIndexOf('>') + 2));
+            return getJudge(judgeWithRoles.substring(judgeWithRoles.indexOf('>') + 1));
+        if (judgeWithRoles.charAt(judgeWithRoles.length() - 1) == '>')
+            return getJudge(judgeWithRoles.substring(0, judgeWithRoles.indexOf('<')));
         Pattern pattern = Pattern.compile("/(.*?)/");
         Matcher matcher = pattern.matcher(judgeWithRoles);
-        if (matcher.find())
-            return new Judge(judgeWithRoles.substring(0, judgeWithRoles.indexOf('/')));
-        else
-            return new Judge(judgeWithRoles);
+        if (matcher.find()) {
+            String name = Functions.clean(judgeWithRoles.substring(0, judgeWithRoles.indexOf('/')));
+            return new Judge(name);
+        } else {
+            String name = Functions.clean(judgeWithRoles);
+            return new Judge(name);
+        }
     }
 
     private List<SpecialRole> getRoles(String judgeWithRoles) {
         if (judgeWithRoles.charAt(0) == '<')
-            return getRoles(judgeWithRoles.substring(judgeWithRoles.lastIndexOf('>') + 2));
+            return getRoles(judgeWithRoles.substring(judgeWithRoles.indexOf('>') + 1));
+        if (judgeWithRoles.charAt(judgeWithRoles.length() - 1) == '>')
+            return getRoles(judgeWithRoles.substring(0, judgeWithRoles.indexOf('<')));
         List<SpecialRole> result = new ArrayList<>();
         Pattern pattern = Pattern.compile("/(.*?)/");
         Matcher matcher = pattern.matcher(judgeWithRoles);

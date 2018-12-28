@@ -4,33 +4,34 @@ import java.io.*;
 import java.util.*;
 
 public class App {
-    private SortedSet<Judge> judges; // = new TreeSet<>();
-    private SortedSet<Statute> statutes; // = new TreeSet<>();
-    private LinkedHashMap<String, Judgement> judgements;
 
-    public static void main(String[] args) {        //JLine, single responsibility principle
-        App judger = new App();
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Podaj ścieżkę katalogu z orzeczeniami");
+            System.exit(2);
+        }
+        List<Judge> judges;
+        List<Statute> statutes;
+        LinkedHashMap<String, Judgement> judgements;
         FileLoader judgementLoader = new FileLoader(args[0]);
         try {
-            judger.judgements = judgementLoader.loadFiles();
-            judger.judges = judgementLoader.countJudges();
-            judger.statutes = judgementLoader.countStatutes();
+            System.out.println("Ładuję pliki...");
+            judgements = judgementLoader.loadFiles();
+            judges = judgementLoader.countJudges();
+            statutes = judgementLoader.countStatutes();
+            System.out.println("Gotowe");
+            Functions functions = new Functions(judges, statutes, judgements);
+            Console console;
+            if (args.length == 1)
+                console = new Console(functions);
+            else
+                console = new Console(functions, args[1]);
+            console.run();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             System.exit(1);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        List<Judge> testTop10 = Functions.take10Judges(judger.judges);
-        for (Judge judge : testTop10) {
-            System.out.println(judge.getName() + " " + judge.getNumberOfJudgements());
-        }
-        List<Statute> testTop10Statutes = Functions.take10Statues(judger.statutes);
-        for (Statute statute : testTop10Statutes)
-            System.out.println(statute.getJournalTitle() + " - " + statute.getNumberOfOccurances());
-
-        System.out.println(Functions.getJudgementsByMonth(judger.judgements));
-        System.out.println(Functions.getJudgementsByCourt(judger.judgements));
-        System.out.println(Functions.getJudgementsByJudges(judger.judgements));
-        //for (Judgement judgement : judger.judgements.values())
-        //    System.out.println(judgement.toString());
     }
 }

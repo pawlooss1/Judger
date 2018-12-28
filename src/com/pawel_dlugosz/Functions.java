@@ -3,38 +3,61 @@ package com.pawel_dlugosz;
 import java.util.*;
 
 public class Functions {
-    public static String getRubrum(String caseSignature, LinkedHashMap<String, Judgement> judgements) {
-        if (judgements.containsKey(caseSignature))
-            return judgements.get(caseSignature).toString();
-        return "Brak orzeczenia o danej sygnaturze";
+    private List<Judge> judges;
+    private List<Statute> statutes;
+    private LinkedHashMap<String, Judgement> judgements;
+
+    Functions(List<Judge> judges, List<Statute> statutes, LinkedHashMap<String, Judgement> judgements) {
+        this.judges = judges;
+        this.statutes = statutes;
+        this.judgements = judgements;
     }
 
-    public static String getRubrums(List<String> signatures, LinkedHashMap<String, Judgement> judgements) {
+    public String getRubrums(List<String> signatures) {
         StringBuilder result = new StringBuilder();
         for (String signature : signatures) {
-            result.append(Functions.getRubrum(signature, judgements));
+            result.append(this.getRubrum(signature));
             result.append("\n");
         }
         return result.toString();
     }
 
-    public static String getSubstantiation(String caseSignature, LinkedHashMap<String, Judgement> judgements) {
+    public String getRubrum(String caseSignature) {
+        caseSignature = clean(caseSignature);
         if (judgements.containsKey(caseSignature))
-            return judgements.get(caseSignature).getSubstantiation();
-        return "Brak orzeczenia o danej sygnaturze";
+            return judgements.get(caseSignature).toString();
+        return "Brak orzeczenia o danej sygnaturze.";
     }
 
-    public static int getNumberOfJudgementsForJudge(String name, SortedSet<Judge> judges) {
+    public static String clean(String caseSignature) {
+        while (caseSignature.charAt(0) == ' ') {
+            caseSignature = caseSignature.substring(1);
+            if (caseSignature.length() == 0)
+                return "";
+        }
+        while (caseSignature.charAt(caseSignature.length() - 1) == ' ')
+            caseSignature = caseSignature.substring(0, caseSignature.length() - 1);
+        return caseSignature;
+    }
+
+    public String getSubstantiation(String caseSignature) {
+        caseSignature = clean(caseSignature);
+        if (judgements.containsKey(caseSignature))
+            return judgements.get(caseSignature).getSubstantiation() + "\n";
+        return "Brak orzeczenia o danej sygnaturze.\n";
+    }
+
+    public int getNumberOfJudgementsForJudge(String name) {
         Iterator<Judge> iterator = judges.iterator();
         while (iterator.hasNext()) {
             Judge currentJudge = iterator.next();
             if (currentJudge.getName().equals(name))
                 return currentJudge.getNumberOfJudgements();
         }
-        throw new NoSuchElementException("Brak sędziego o danym nazwisku");
+        throw new NoSuchElementException("Brak sędziego o danym nazwisku.\n");
     }
 
-    public static List<Judge> take10Judges(SortedSet<Judge> judges) {
+    public List<Judge> take10Judges() {
         List<Judge> topJudges = new ArrayList<>();
         Iterator<Judge> it = judges.iterator();
         for (int i = 0; i < 10 && it.hasNext(); i++)
@@ -42,7 +65,7 @@ public class Functions {
         return topJudges;
     }
 
-    public static List<Statute> take10Statues(SortedSet<Statute> statutes) {
+    public List<Statute> take10Statues() {
         List<Statute> topStatutes = new ArrayList<>();
         Iterator<Statute> it = statutes.iterator();
         for (int i = 0; i < 10 && it.hasNext(); i++)
@@ -50,7 +73,7 @@ public class Functions {
         return topStatutes;
     }
 
-    public static String getJudgementsByMonth(LinkedHashMap<String, Judgement> judgements) {
+    public String getJudgementsByMonth() {
         int[] months = Functions.countJudgementsByMonth(judgements);
         StringBuilder result = new StringBuilder();
         result.append("Styczeń: ");
@@ -90,7 +113,7 @@ public class Functions {
         return result;
     }
 
-    public static String getJudgementsByCourt(LinkedHashMap<String, Judgement> judgements) {
+    public String getJudgementsByCourt() {
         Map<CourtType, Integer> courts = Functions.countJudgementsByCourt(judgements);
         StringBuilder result = new StringBuilder();
         result.append(CourtType.COMMON.toString());
@@ -130,7 +153,7 @@ public class Functions {
         return result;
     }
 
-    public static String getJudgementsByJudges(LinkedHashMap<String, Judgement> judgements) {
+    public String getJudgementsByJudges() {
         int[] judgementsByJudges = Functions.countJudgementsByJudges(judgements);
         StringBuilder result = new StringBuilder();
         for (int i = 1; i < judgementsByJudges.length; i++) {

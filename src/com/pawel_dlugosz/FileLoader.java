@@ -53,11 +53,9 @@ public class FileLoader {
             Document document = Jsoup.parse(file, "UTF-8");
             List<Judgement> loadedFromFile = htmlLoader.readHtmlDocument(document);
             this.putLoadedJudgements(loadedFromFile);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
     }
@@ -72,25 +70,27 @@ public class FileLoader {
         }
     }
 
-    public SortedSet<Judge> countJudges() {
-        SortedSet<Judge> result = new TreeSet<>();
+    public List<Judge> countJudges() {
+        List<Judge> result = new LinkedList<>();
         while (!this.loadedJudges.isEmpty()) {
             Judge currentJudge = loadedJudges.getFirst();
             while (loadedJudges.removeFirstOccurrence(currentJudge))
                 currentJudge.incrementNumberOfJudgements();
             result.add(currentJudge);
         }
+        Collections.sort(result);
         return result;
     }
 
-    public SortedSet<Statute> countStatutes() {
-        SortedSet<Statute> result = new TreeSet<>();
+    public List<Statute> countStatutes() {
+        List<Statute> result = new LinkedList<>();
         while (!this.loadedStatutes.isEmpty()) {
             Statute currentStatute = loadedStatutes.getFirst();
             while (loadedStatutes.removeFirstOccurrence(currentStatute))
                 currentStatute.incrementOccurances();
             result.add(currentStatute);
         }
+        Collections.sort(result);
         return result;
     }
 }
